@@ -214,4 +214,4 @@ export const request = new RequestUtil();
 
 // 导出类型和工具
 export { RequestUtil };
-export type { RequestConfig, ApiResponse };
+// 类型已在上面定义，无需重复导出

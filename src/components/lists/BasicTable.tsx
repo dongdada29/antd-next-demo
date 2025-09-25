@@ -2,7 +2,7 @@ import { Button, Space, Table, Card, Popconfirm, Tag } from 'antd';
 import { EditOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
 import type { ColumnsType, TableProps } from 'antd/es/table';
 
-interface BasicTableProps<T = any> extends Omit<TableProps<T>, 'columns'> {
+interface BasicTableProps<T = any> extends Omit<TableProps<T>, 'columns' | 'title'> {
   title?: string;
   data?: T[];
   columns?: TableColumn<T>[];

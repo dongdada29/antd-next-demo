@@ -1,6 +1,7 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
+import { QueryProvider } from '@/providers/QueryProvider';
 import './globals.css';
 
 export const metadata = {
@@ -16,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="zh">
       <body>
-        <AntdRegistry>
-          <ConfigProvider locale={zhCN}>
-            {children}
-          </ConfigProvider>
-        </AntdRegistry>
+        <QueryProvider>
+          <AntdRegistry>
+            <ConfigProvider locale={zhCN}>
+              {children}
+            </ConfigProvider>
+          </AntdRegistry>
+        </QueryProvider>
       </body>
     </html>
   );

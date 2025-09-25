@@ -2,6 +2,8 @@
 export * from './constants';
 export * from './helpers';
 export * from './validations';
-export * from './mockData';
+// mockData已删除
 export * from './api-documentation-validator';
 export * from './api-documentation-templates';
+export * from './type-generator';
+export * from './type-generator-utils';
