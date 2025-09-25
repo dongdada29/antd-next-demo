@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "type-check": "tsc --noEmit"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "build:analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.1.0",
@@ -26,5 +27,11 @@
     "eslint-config-next": "^14.2.15",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 87",
+    "Firefox >= 78", 
+    "Safari >= 14",
+    "Edge >= 87"
+  ]
 }
