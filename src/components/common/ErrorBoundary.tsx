@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Result, Button, Alert, Typography } from 'antd';
+import { Result, Button, Alert, Typography, Space } from 'antd';
 import { APIError } from '@/lib/api-client';
+import { globalErrorHandler } from '@/lib/error-handler';
 
 const { Paragraph, Text } = Typography;
 
@@ -42,6 +43,9 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
       errorInfo,
     });
     
+    // 使用全局错误处理器
+    globalErrorHandler.handle(error, 'React Error Boundary');
+    
     // 调用错误回调
     this.props.onError?.(error, errorInfo);
   }
@@ -58,6 +62,9 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         return <FallbackComponent error={this.state.error} retry={this.handleRetry} />;
       }
 
+      // 获取恢复操作建议
+      const recoveryActions = globalErrorHandler.getRecoveryActions(this.state.error);
+      
       // 默认错误UI
       return (
         <Result
@@ -65,9 +72,16 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
           title="页面出错了"
           subTitle="抱歉，页面发生了错误"
           extra={
-            <Button type="primary" onClick={this.handleRetry}>
-              重试
-            </Button>
+            <Space>
+              <Button type="primary" onClick={this.handleRetry}>
+                重试
+              </Button>
+              {recoveryActions.slice(0, 2).map((action, index) => (
+                <Button key={index} onClick={action.action}>
+                  {action.label}
+                </Button>
+              ))}
+            </Space>
           }
         >
           {process.env.NODE_ENV === 'development' && (

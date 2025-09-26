@@ -7,3 +7,4 @@ export * from './api-documentation-validator';
 export * from './api-documentation-templates';
 export * from './type-generator';
 export * from './type-generator-utils';
+export * from './error-handler';

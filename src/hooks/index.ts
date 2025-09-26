@@ -38,3 +38,6 @@ export {
   useCacheStrategy,
   useCacheOptimization
 } from './useApiCache';
+
+// 错误处理相关Hooks
+export * from './useErrorHandler';

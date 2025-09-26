@@ -21,3 +21,6 @@ export type LoadingState = 'idle' | 'loading' | 'success' | 'error';
 
 // API Documentation types
 export * from './api-documentation';
+
+// Development Stage types
+export * from './development-stage';
