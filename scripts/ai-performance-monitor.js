@@ -10,7 +10,7 @@ const path = require('path');
 
 class AIPerformanceMonitor {
   constructor() {
-    this.metricsFile = '.kiro/metrics/ai-performance.json';
+    this.metricsFile = '.ai/metrics/ai-performance.json';
     this.ensureMetricsDirectory();
   }
 
@@ -200,7 +200,7 @@ class AIPerformanceMonitor {
     }
     
     // 通用建议
-    console.log('   📚 查看 .kiro/prompts/ 目录获取优化的提示词');
+    console.log('   📚 查看 .ai/prompts/ 目录获取优化的提示词');
     console.log('   ⚙️  使用 pnpm ai:optimize --task <type> 获取任务特定建议');
   }
 
@@ -209,12 +209,12 @@ class AIPerformanceMonitor {
     const timestamp = new Date().toISOString().split('T')[0];
     
     if (format === 'json') {
-      const filename = `.kiro/reports/ai-performance-${timestamp}.json`;
+      const filename = `.ai/reports/ai-performance-${timestamp}.json`;
       this.ensureReportsDirectory();
       fs.writeFileSync(filename, JSON.stringify(data, null, 2));
       console.log(`📄 报告已导出到: ${filename}`);
     } else if (format === 'csv') {
-      const filename = `.kiro/reports/ai-performance-${timestamp}.csv`;
+      const filename = `.ai/reports/ai-performance-${timestamp}.csv`;
       this.ensureReportsDirectory();
       this.exportToCSV(data.sessions, filename);
       console.log(`📄 报告已导出到: ${filename}`);
@@ -222,7 +222,7 @@ class AIPerformanceMonitor {
   }
 
   ensureReportsDirectory() {
-    const dir = '.kiro/reports';
+    const dir = '.ai/reports';
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }

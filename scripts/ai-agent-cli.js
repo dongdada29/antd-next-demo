@@ -42,8 +42,8 @@ function initProject() {
     'src/components/templates',
     'src/lib/ai',
     'src/test/templates',
-    '.kiro/templates',
-    '.kiro/prompts',
+    '.ai/templates',
+    '.ai/prompts',
     'docs/components',
     'docs/examples',
   ];
@@ -167,7 +167,7 @@ function useClaudeMode(options) {
   console.log('  - Request accessibility compliance');
   console.log('  - Ask for performance optimizations');
   
-  console.log('\n📖 See .kiro/prompts/claude-optimized.md for detailed prompts');
+  console.log('\n📖 See .ai/prompts/claude-optimized.md for detailed prompts');
 }
 
 function useCodexMode(options) {
@@ -190,7 +190,7 @@ function useCodexMode(options) {
   console.log('  - Leverage existing code context');
   console.log('  - Use inline comments for guidance');
   
-  console.log('\n📖 See .kiro/prompts/codex-optimized.md for detailed prompts');
+  console.log('\n📖 See .ai/prompts/codex-optimized.md for detailed prompts');
 }
 
 function optimizeAISelection(options) {
@@ -232,19 +232,19 @@ function getAIRecommendations(task, complexity, timeline) {
         model: 'Codex',
         reason: 'Fast generation for simple components',
         settings: { contextLength: 'minimal', detailLevel: 'basic' },
-        prompts: '.kiro/prompts/codex-optimized.md'
+        prompts: '.ai/prompts/codex-optimized.md'
       },
       medium: {
         model: 'Claude',
         reason: 'Balanced approach with good practices',
         settings: { contextLength: 'moderate', detailLevel: 'detailed' },
-        prompts: '.kiro/prompts/claude-optimized.md'
+        prompts: '.ai/prompts/claude-optimized.md'
       },
       complex: {
         model: 'Claude',
         reason: 'Deep understanding needed for complex components',
         settings: { contextLength: 'maximum', detailLevel: 'comprehensive' },
-        prompts: '.kiro/prompts/claude-optimized.md',
+        prompts: '.ai/prompts/claude-optimized.md',
         workflow: [
           { phase: 'Design', description: 'Architecture and interface design', model: 'Claude' },
           { phase: 'Implementation', description: 'Core component logic', model: 'Claude' },

@@ -55,9 +55,9 @@
     "styles": "src/styles"
   },
   "templates": {
-    "component": ".kiro/templates/component.template.tsx",
-    "page": ".kiro/templates/page.template.tsx",
-    "hook": ".kiro/templates/hook.template.ts",
-    "test": ".kiro/templates/test.template.tsx"
+    "component": ".ai/templates/component.template.tsx",
+    "page": ".ai/templates/page.template.tsx",
+    "hook": ".ai/templates/hook.template.ts",
+    "test": ".ai/templates/test.template.tsx"
   }
 }

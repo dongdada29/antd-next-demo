@@ -2,7 +2,7 @@
 
 ## 概述
 
-本指南详细说明如何在 Claude Code 和 Codex 之间进行选择和优化，以获得最佳的代码生成效果。
+本指南详细说明如何在不同 AI Agent 之间进行选择和优化，以获得最佳的代码生成效果。
 
 ## AI 模型对比
 
@@ -24,24 +24,7 @@
 - 技术文档生成
 - 性能优化分析
 
-#### ⚙️ 优化策略
-```markdown
-**提示词优化:**
-- 提供完整的项目上下文
-- 详细描述需求和约束
-- 明确质量标准和期望
-- 包含相关的代码示例
-- 要求详细的实现说明
-
-**设置优化:**
-- 使用最大上下文长度
-- 启用迭代改进模式
-- 要求全面的错误处理
-- 包含可访问性检查
-- 生成完整的测试用例
-```
-
-### Codex/Copilot 优势
+### GitHub Copilot/Codex 优势
 
 #### ⚡ 核心优势
 - **快速代码生成**: 极快的响应速度和代码补全
@@ -58,28 +41,11 @@
 - 基础功能实现
 - 快速问题解决
 
-#### ⚙️ 优化策略
-```markdown
-**提示词优化:**
-- 使用简洁明确的指令
-- 提供具体的代码模式
-- 利用现有代码上下文
-- 使用内联注释指导
-- 专注于核心功能
-
-**设置优化:**
-- 最小化上下文长度
-- 专注于速度和效率
-- 利用模式匹配能力
-- 优化代码补全体验
-- 减少不必要的详细说明
-```
-
 ## 任务分配策略
 
 ### 基于任务复杂度
 
-#### 简单任务 → Codex
+#### 简单任务 → Copilot/Codex
 ```bash
 # 快速组件生成
 pnpm ai:codex --task component --complexity simple
@@ -117,7 +83,7 @@ pnpm ai:claude --task test --complexity complex
 
 ### 基于开发阶段
 
-#### 原型阶段 → Codex
+#### 原型阶段 → Copilot/Codex
 - 快速概念验证
 - 基础功能实现
 - 简单 UI 组件
@@ -139,13 +105,13 @@ pnpm ai:claude --task test --complexity complex
 
 ### 混合开发模式
 
-#### 阶段 1: 快速原型 (Codex)
+#### 阶段 1: 快速原型 (Copilot/Codex)
 ```bash
 # 生成基础组件结构
 pnpm ai:codex --task component --name UserCard --type ui
 
 # 快速实现核心功能
-# 使用 Codex 的快速生成能力
+# 使用 Copilot 的快速生成能力
 ```
 
 #### 阶段 2: 深度开发 (Claude)
@@ -163,21 +129,6 @@ pnpm ai:claude --task test --component UserCard
 
 # 生成文档
 pnpm ai:claude --task docs --component UserCard
-```
-
-### 迭代优化流程
-
-```mermaid
-graph TD
-    A[需求分析] --> B{任务复杂度}
-    B -->|简单| C[Codex 快速实现]
-    B -->|复杂| D[Claude 深度开发]
-    C --> E[功能验证]
-    D --> E
-    E --> F{质量检查}
-    F -->|通过| G[完成]
-    F -->|需要改进| H[Claude 优化]
-    H --> E
 ```
 
 ## 性能监控和优化
@@ -258,7 +209,7 @@ pnpm ai:optimize --task refactor --complexity complex
 - 性能优化说明
 ```
 
-### Codex 最佳实践
+### Copilot/Codex 最佳实践
 
 #### 1. 简洁明确的指令
 ```typescript
@@ -268,9 +219,9 @@ pnpm ai:optimize --task refactor --complexity complex
 
 #### 2. 利用代码上下文
 ```typescript
-// 在相关文件中工作，让 Codex 学习项目模式
+// 在相关文件中工作，让 Copilot 学习项目模式
 import { Button } from '@/components/ui/button';
-// Codex 会自动理解项目结构和导入模式
+// Copilot 会自动理解项目结构和导入模式
 ```
 
 #### 3. 使用内联注释
@@ -280,7 +231,7 @@ const UserCard = () => {
   // Use Card component from shadcn/ui
   // Include edit and delete buttons
   return (
-    // Codex 会根据注释生成相应代码
+    // Copilot 会根据注释生成相应代码
   );
 };
 ```
@@ -303,7 +254,7 @@ const UserCard = () => {
 - 分解复杂任务
 - 使用增量开发方式
 
-#### Codex 问题
+#### Copilot/Codex 问题
 
 **问题**: 生成的代码不完整
 **解决方案**:
@@ -317,26 +268,12 @@ const UserCard = () => {
 - 提供项目模式示例
 - 使用项目特定的注释
 
-### 性能优化技巧
-
-#### 提示词优化
-1. **结构化提示**: 使用清晰的标题和分段
-2. **示例驱动**: 提供具体的代码示例
-3. **约束明确**: 清楚说明限制和要求
-4. **输出格式**: 指定期望的输出格式
-
-#### 工作流优化
-1. **任务分解**: 将复杂任务分解为小步骤
-2. **迭代改进**: 使用多轮对话完善代码
-3. **模板复用**: 建立常用的代码模板
-4. **质量检查**: 建立自动化质量检查流程
-
 ## 总结
 
 选择合适的 AI 模型和优化策略可以显著提高开发效率和代码质量：
 
 - **Claude Code**: 适合复杂任务，注重质量和完整性
-- **Codex**: 适合快速开发，注重速度和效率
+- **Copilot/Codex**: 适合快速开发，注重速度和效率
 - **混合使用**: 根据任务特点灵活选择和组合
 - **持续优化**: 通过监控和分析不断改进工作流
 
