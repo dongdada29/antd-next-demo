@@ -1,12 +1,14 @@
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { ConfigProvider } from 'antd';
-import zhCN from 'antd/locale/zh_CN';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { QueryProvider } from '@/providers/QueryProvider';
+import { cn } from "@/lib/utils";
 import './globals.css';
 
-export const metadata = {
-  title: 'AI Generated App',
-  description: 'Created with AI assistance',
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: 'shadcn/ui Next.js Template',
+  description: 'A modern web application template built with Next.js, shadcn/ui, and Tailwind CSS',
 };
 
 export default function RootLayout({
@@ -15,14 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh">
-      <body>
+    <html lang="zh-CN" suppressHydrationWarning>
+      <body className={cn(
+        "min-h-screen bg-background font-sans antialiased",
+        inter.className
+      )}>
         <QueryProvider>
-          <AntdRegistry>
-            <ConfigProvider locale={zhCN}>
-              {children}
-            </ConfigProvider>
-          </AntdRegistry>
+          {children}
         </QueryProvider>
       </body>
     </html>
