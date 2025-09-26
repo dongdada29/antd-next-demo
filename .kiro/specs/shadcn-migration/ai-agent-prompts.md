@@ -1,141 +1,172 @@
-# AI Agent 提示词和代码生成指引
+# AI Agent 提示词系统和代码生成指引
 
 ## 概述
 
-本文档基于 v0 提示词方案，为 AI Agent 提供标准化的代码生成指引，确保生成的代码符合 shadcn/ui + Tailwind CSS 最佳实践。
+本文档基于 [V0 系统提示词](https://github.com/2-fly-4-ai/V0-system-prompt/) 规范，为 AI Agent 提供标准化的代码生成指引，确保生成的代码符合 shadcn/ui + Tailwind CSS 项目规范。
 
 ## 核心原则
 
-### 1. 组件优先原则
-- 优先使用 shadcn/ui 组件作为基础构建块
-- 避免从零开始创建基础 UI 组件
-- 通过组合和扩展现有组件来实现复杂功能
+### 1. 技术栈优先级
+- **UI 组件**: 优先使用 shadcn/ui 组件
+- **样式**: 优先使用 Tailwind CSS 实用类
+- **状态管理**: 使用 React Hooks 和 Context
+- **类型安全**: 完整的 TypeScript 类型定义
+- **性能**: 考虑懒加载和代码分割
 
-### 2. Tailwind CSS 优先原则
-- 优先使用 Tailwind CSS 实用类
-- 避免编写自定义 CSS，除非绝对必要
-- 使用 Tailwind 的设计系统（间距、颜色、字体等）
-
-### 3. TypeScript 严格模式
-- 所有组件必须有完整的类型定义
-- 使用泛型提高组件复用性
-- 提供清晰的接口文档
+### 2. 代码质量标准
+- 遵循 ESLint 和 Prettier 配置
+- 使用语义化的变量和函数命名
+- 提供完整的 JSDoc 注释
+- 实现适当的错误处理
+- 考虑可访问性要求
 
 ## AI Agent 提示词模板
 
-### 基础组件创建提示词
+### 基础组件生成提示词
 
 ```
-你是一个专业的 React + TypeScript 开发者，专门使用 shadcn/ui 和 Tailwind CSS 创建现代化的 UI 组件。
+你是一个专业的 React + TypeScript 开发专家，专门使用 shadcn/ui + Tailwind CSS 技术栈。
 
-请遵循以下规范：
+请根据以下要求生成组件代码：
 
-1. **组件结构**：
-   - 使用 shadcn/ui 组件作为基础
-   - 采用组合模式而非继承
-   - 保持组件的单一职责
+**技术要求：**
+- 使用 shadcn/ui 组件作为基础构建块
+- 使用 Tailwind CSS 实用类进行样式设计
+- 提供完整的 TypeScript 类型定义
+- 遵循 React 最佳实践和 Hooks 模式
+- 确保组件的可访问性（ARIA 标签、键盘导航）
 
-2. **样式规范**：
-   - 只使用 Tailwind CSS 类名
-   - 使用语义化的颜色变量（如 primary、secondary）
-   - 遵循响应式设计原则
+**代码规范：**
+- 使用函数式组件和 React.forwardRef
+- 使用 class-variance-authority (cva) 处理组件变体
+- 使用 clsx 或 cn 工具函数合并类名
+- 提供 JSDoc 注释和使用示例
+- 实现适当的默认值和错误处理
 
-3. **TypeScript 规范**：
-   - 定义清晰的 Props 接口
-   - 使用泛型提高复用性
-   - 添加 JSDoc 注释
+**样式指引：**
+- 优先使用 Tailwind CSS 预设类
+- 使用 CSS 变量进行主题定制
+- 实现响应式设计（sm:, md:, lg:, xl:）
+- 支持暗色模式（dark: 前缀）
+- 遵循设计系统的间距和颜色规范
 
-4. **可访问性**：
-   - 添加适当的 ARIA 属性
-   - 支持键盘导航
-   - 确保颜色对比度符合标准
-
-请创建一个 [组件名称] 组件，要求：[具体需求]
+请生成：[具体组件需求]
 ```
 
-### 页面组件创建提示词
+### 页面组件生成提示词
 
 ```
-你是一个专业的 Next.js + React 开发者，使用 shadcn/ui 和 Tailwind CSS 创建现代化的页面组件。
+你是一个专业的 Next.js + React 开发专家，使用 shadcn/ui + Tailwind CSS 技术栈。
 
-请遵循以下规范：
+请创建一个完整的页面组件，要求：
 
-1. **页面结构**：
-   - 使用语义化的 HTML 标签
-   - 采用现代布局技术（Flexbox、Grid）
-   - 确保响应式设计
+**架构要求：**
+- 使用 Next.js App Router 模式
+- 实现适当的 SEO 优化（metadata）
+- 使用 React Server Components 和 Client Components
+- 实现错误边界和加载状态
+- 考虑性能优化（懒加载、代码分割）
 
-2. **组件组合**：
-   - 使用 shadcn/ui 组件构建页面
-   - 保持组件的可复用性
-   - 合理拆分子组件
+**UI 要求：**
+- 使用 shadcn/ui 组件构建界面
+- 实现响应式布局设计
+- 提供良好的用户体验（加载状态、错误提示）
+- 遵循可访问性标准
+- 支持暗色模式切换
 
-3. **状态管理**：
-   - 使用 React Hooks 管理状态
-   - 合理使用 Context 共享状态
-   - 实现适当的错误边界
+**数据处理：**
+- 使用 React Query 或 SWR 进行数据获取
+- 实现适当的缓存策略
+- 处理加载、错误和空状态
+- 提供数据验证和类型安全
 
-4. **性能优化**：
-   - 使用 React.memo 优化渲染
-   - 实现懒加载和代码分割
-   - 优化图片和资源加载
-
-请创建一个 [页面名称] 页面，包含：[页面功能描述]
+请生成：[具体页面需求]
 ```
 
-### 表单组件创建提示词
+### 表单组件生成提示词
 
 ```
-你是一个专业的表单开发专家，使用 shadcn/ui、Tailwind CSS 和 react-hook-form 创建高质量的表单组件。
+你是一个专业的表单开发专家，使用 React Hook Form + shadcn/ui + Tailwind CSS。
 
-请遵循以下规范：
+请创建一个表单组件，要求：
 
-1. **表单结构**：
-   - 使用 react-hook-form 管理表单状态
-   - 使用 zod 进行表单验证
-   - 采用 shadcn/ui Form 组件
+**表单架构：**
+- 使用 React Hook Form 进行表单管理
+- 使用 Zod 进行数据验证
+- 集成 shadcn/ui 表单组件
+- 实现实时验证和错误提示
+- 提供良好的用户体验
 
-2. **用户体验**：
-   - 提供实时验证反馈
-   - 显示清晰的错误信息
-   - 支持键盘导航和提交
+**组件要求：**
+- 使用 shadcn/ui Form, Input, Button 等组件
+- 实现字段验证和错误显示
+- 支持不同的输入类型（文本、选择、日期等）
+- 提供加载状态和提交反馈
+- 确保可访问性（标签、错误关联）
 
-3. **可访问性**：
-   - 正确关联 label 和 input
-   - 提供 aria-describedby 错误描述
-   - 支持屏幕阅读器
+**样式设计：**
+- 使用 Tailwind CSS 进行布局
+- 实现响应式表单设计
+- 提供视觉反馈（焦点、错误、成功状态）
+- 遵循设计系统规范
 
-4. **样式设计**：
-   - 使用一致的间距和布局
-   - 提供视觉反馈（focus、error 状态）
-   - 响应式设计适配移动端
-
-请创建一个 [表单名称] 表单，包含字段：[字段列表和验证规则]
+请生成：[具体表单需求]
 ```
 
-## 代码生成模板
+### 数据表格生成提示词
 
-### 基础组件模板
+```
+你是一个专业的数据表格开发专家，使用 shadcn/ui + TanStack Table + Tailwind CSS。
+
+请创建一个数据表格组件，要求：
+
+**表格功能：**
+- 使用 shadcn/ui Table 组件
+- 集成 TanStack Table 进行数据管理
+- 实现排序、筛选、分页功能
+- 支持行选择和批量操作
+- 提供搜索和导出功能
+
+**性能优化：**
+- 实现虚拟滚动（大数据集）
+- 使用 React.memo 优化渲染
+- 实现懒加载和分页
+- 提供加载状态和骨架屏
+
+**用户体验：**
+- 响应式表格设计
+- 提供空状态和错误状态
+- 实现可访问的表格导航
+- 支持键盘操作
+
+请生成：[具体表格需求]
+```
+
+## 代码生成规范
+
+### 1. 组件结构模板
 
 ```typescript
+'use client';
+
 import React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import { VariantProps, cva } from 'class-variance-authority';
 
 // 组件变体定义
 const componentVariants = cva(
   // 基础样式
-  "base-classes-here",
+  "base-classes",
   {
     variants: {
       variant: {
-        default: "default-variant-classes",
-        secondary: "secondary-variant-classes",
+        default: "default-styles",
+        secondary: "secondary-styles",
       },
       size: {
-        sm: "small-size-classes",
-        md: "medium-size-classes",
-        lg: "large-size-classes",
+        sm: "small-styles",
+        md: "medium-styles",
+        lg: "large-styles",
       },
     },
     defaultVariants: {
@@ -145,511 +176,245 @@ const componentVariants = cva(
   }
 );
 
-// Props 接口定义
+// 组件 Props 接口
 interface ComponentProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof componentVariants> {
-  /**
-   * 组件的主要内容
-   */
-  children?: React.ReactNode;
-  
-  /**
-   * 是否禁用组件
-   */
-  disabled?: boolean;
+  // 自定义 props
 }
 
 /**
- * [组件名称] - [组件描述]
+ * 组件描述和使用说明
  * 
  * @example
  * ```tsx
  * <Component variant="default" size="md">
- *   Content here
+ *   Content
  * </Component>
  * ```
  */
 const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
-  ({ className, variant, size, children, disabled, ...props }, ref) => {
+  ({ className, variant, size, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(componentVariants({ variant, size }), className)}
-        aria-disabled={disabled}
         {...props}
-      >
-        {children}
-      </div>
+      />
     );
   }
 );
 
 Component.displayName = "Component";
 
-export { Component, type ComponentProps };
+export { Component, componentVariants };
+export type { ComponentProps };
 ```
 
-### 页面组件模板
+### 2. 页面组件模板
 
 ```typescript
-'use client';
-
-import React from 'react';
 import { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
+import { Suspense } from 'react';
+import { ErrorBoundary } from '@/components/error-boundary';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
-// 页面元数据
+// SEO 元数据
 export const metadata: Metadata = {
   title: 'Page Title',
-  description: 'Page description for SEO',
+  description: 'Page description',
 };
 
-// 页面 Props 接口
-interface PageProps {
-  params: {
-    // 动态路由参数
-  };
-  searchParams: {
-    // 查询参数
-  };
-}
-
-/**
- * [页面名称] - [页面描述]
- */
-export default function Page({ params, searchParams }: PageProps) {
-  // 状态管理
-  const [loading, setLoading] = React.useState(false);
-  
-  // 事件处理
-  const handleAction = async () => {
-    setLoading(true);
-    try {
-      // 处理逻辑
-    } catch (error) {
-      console.error('Error:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+// 页面组件
+export default function PageName() {
   return (
-    <div className="container mx-auto py-6 space-y-6">
-      {/* 页面头部 */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Page Title</h1>
-          <p className="text-muted-foreground">Page description</p>
-        </div>
-        <Button onClick={handleAction} disabled={loading}>
-          {loading ? 'Loading...' : 'Action'}
-        </Button>
+    <ErrorBoundary>
+      <div className="container mx-auto px-4 py-8">
+        <Suspense fallback={<LoadingSpinner />}>
+          {/* 页面内容 */}
+        </Suspense>
       </div>
-
-      <Separator />
-
-      {/* 页面内容 */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <CardTitle>Section Title</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {/* 内容区域 */}
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    </ErrorBoundary>
   );
 }
 ```
 
-### 表单组件模板
+### 3. Hooks 模板
 
 ```typescript
 'use client';
 
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useState, useEffect, useCallback } from 'react';
 
-// 表单验证 Schema
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-});
+interface UseCustomHookOptions {
+  // 选项接口
+}
 
-type FormValues = z.infer<typeof formSchema>;
-
-// 表单 Props 接口
-interface FormComponentProps {
-  onSubmit: (values: FormValues) => Promise<void>;
-  defaultValues?: Partial<FormValues>;
-  disabled?: boolean;
+interface UseCustomHookReturn {
+  // 返回值接口
 }
 
 /**
- * [表单名称] - [表单描述]
+ * 自定义 Hook 描述
+ * 
+ * @param options - Hook 选项
+ * @returns Hook 返回值
+ * 
+ * @example
+ * ```tsx
+ * const { data, loading, error } = useCustomHook({ option: 'value' });
+ * ```
  */
-export function FormComponent({ 
-  onSubmit, 
-  defaultValues, 
-  disabled = false 
-}: FormComponentProps) {
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      ...defaultValues,
-    },
-  });
-
-  const handleSubmit = async (values: FormValues) => {
-    try {
-      await onSubmit(values);
-      form.reset();
-    } catch (error) {
-      console.error('Form submission error:', error);
-    }
+export function useCustomHook(options: UseCustomHookOptions): UseCustomHookReturn {
+  // Hook 实现
+  
+  return {
+    // 返回值
   };
-
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Form Title</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder="Enter your name" 
-                      disabled={disabled}
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    This is your display name.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="email"
-                      placeholder="Enter your email" 
-                      disabled={disabled}
-                      {...field} 
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button 
-              type="submit" 
-              disabled={disabled || form.formState.isSubmitting}
-              className="w-full"
-            >
-              {form.formState.isSubmitting ? 'Submitting...' : 'Submit'}
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
-  );
 }
 ```
 
 ## 样式指引
 
-### Tailwind CSS 最佳实践
+### 1. Tailwind CSS 类名优先级
 
-1. **布局类**：
-   ```css
-   /* 容器 */
-   .container mx-auto px-4
-   
-   /* Flexbox */
-   .flex items-center justify-between
-   .flex-col space-y-4
-   
-   /* Grid */
-   .grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6
-   ```
+```css
+/* 布局 */
+.container, .flex, .grid, .block, .inline
 
-2. **间距系统**：
-   ```css
-   /* 内边距 */
-   .p-4 .px-6 .py-2
-   
-   /* 外边距 */
-   .m-4 .mx-auto .my-6
-   
-   /* 间距 */
-   .space-y-4 .space-x-2
-   ```
+/* 间距 */
+.p-*, .m-*, .space-*, .gap-*
 
-3. **颜色系统**：
-   ```css
-   /* 主色调 */
-   .bg-primary .text-primary-foreground
-   
-   /* 语义化颜色 */
-   .bg-destructive .text-destructive-foreground
-   .bg-success .text-success-foreground
-   
-   /* 中性色 */
-   .bg-muted .text-muted-foreground
-   ```
+/* 尺寸 */
+.w-*, .h-*, .min-*, .max-*
 
-4. **响应式设计**：
-   ```css
-   /* 断点前缀 */
-   .sm:text-sm .md:grid-cols-2 .lg:px-8 .xl:max-w-6xl
-   
-   /* 移动优先 */
-   .text-sm md:text-base lg:text-lg
-   ```
+/* 颜色 */
+.bg-*, .text-*, .border-*
 
-### 组件组合模式
+/* 响应式 */
+.sm:*, .md:*, .lg:*, .xl:*, .2xl:*
 
-1. **卡片布局**：
-   ```tsx
-   <Card>
-     <CardHeader>
-       <CardTitle>Title</CardTitle>
-       <CardDescription>Description</CardDescription>
-     </CardHeader>
-     <CardContent>
-       Content here
-     </CardContent>
-     <CardFooter>
-       <Button>Action</Button>
-     </CardFooter>
-   </Card>
-   ```
+/* 状态 */
+.hover:*, .focus:*, .active:*, .disabled:*
 
-2. **表单布局**：
-   ```tsx
-   <Form {...form}>
-     <form className="space-y-6">
-       <FormField>
-         <FormItem>
-           <FormLabel />
-           <FormControl>
-             <Input />
-           </FormControl>
-           <FormMessage />
-         </FormItem>
-       </FormField>
-     </form>
-   </Form>
-   ```
-
-3. **对话框模式**：
-   ```tsx
-   <Dialog>
-     <DialogTrigger asChild>
-       <Button>Open</Button>
-     </DialogTrigger>
-     <DialogContent>
-       <DialogHeader>
-         <DialogTitle>Title</DialogTitle>
-         <DialogDescription>Description</DialogDescription>
-       </DialogHeader>
-       Content
-       <DialogFooter>
-         <Button>Action</Button>
-       </DialogFooter>
-     </DialogContent>
-   </Dialog>
-   ```
-
-## 性能优化指引
-
-### 1. 组件优化
-```typescript
-// 使用 React.memo 优化渲染
-const OptimizedComponent = React.memo(Component);
-
-// 使用 useMemo 缓存计算结果
-const memoizedValue = React.useMemo(() => {
-  return expensiveCalculation(props);
-}, [props]);
-
-// 使用 useCallback 缓存函数
-const memoizedCallback = React.useCallback(() => {
-  handleAction();
-}, [dependency]);
+/* 暗色模式 */
+.dark:*
 ```
 
-### 2. 懒加载
-```typescript
-// 动态导入组件
-const LazyComponent = React.lazy(() => import('./Component'));
+### 2. 设计 Token 使用
 
-// 使用 Suspense 包装
-<Suspense fallback={<div>Loading...</div>}>
-  <LazyComponent />
-</Suspense>
-```
-
-### 3. 代码分割
 ```typescript
-// 路由级别的代码分割
-const HomePage = React.lazy(() => import('./pages/Home'));
-const AboutPage = React.lazy(() => import('./pages/About'));
+// 颜色系统
+const colors = {
+  primary: 'hsl(var(--primary))',
+  secondary: 'hsl(var(--secondary))',
+  accent: 'hsl(var(--accent))',
+  muted: 'hsl(var(--muted))',
+};
+
+// 间距系统
+const spacing = {
+  xs: '0.25rem',
+  sm: '0.5rem',
+  md: '1rem',
+  lg: '1.5rem',
+  xl: '2rem',
+};
+
+// 圆角系统
+const borderRadius = {
+  sm: '0.25rem',
+  md: '0.375rem',
+  lg: '0.5rem',
+  xl: '0.75rem',
+};
 ```
 
 ## 可访问性指引
 
 ### 1. ARIA 属性
-```tsx
-// 按钮状态
-<Button aria-pressed={isPressed} aria-expanded={isExpanded}>
-  Toggle
-</Button>
 
-// 表单标签
-<Label htmlFor="email">Email</Label>
-<Input id="email" aria-describedby="email-error" />
-<div id="email-error" role="alert">Error message</div>
+```typescript
+// 按钮组件
+<button
+  aria-label="操作描述"
+  aria-describedby="help-text"
+  aria-pressed={isPressed}
+  disabled={isDisabled}
+>
+  按钮文本
+</button>
 
-// 导航
-<nav aria-label="Main navigation">
-  <ul role="list">
-    <li><a href="/" aria-current="page">Home</a></li>
-  </ul>
-</nav>
+// 表单字段
+<input
+  aria-label="字段标签"
+  aria-invalid={hasError}
+  aria-describedby={hasError ? "error-message" : "help-text"}
+/>
 ```
 
 ### 2. 键盘导航
+
 ```typescript
-// 键盘事件处理
 const handleKeyDown = (event: React.KeyboardEvent) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
-    handleClick();
+  switch (event.key) {
+    case 'Enter':
+    case ' ':
+      event.preventDefault();
+      onClick?.();
+      break;
+    case 'Escape':
+      onClose?.();
+      break;
   }
 };
-
-// 焦点管理
-const focusRef = React.useRef<HTMLButtonElement>(null);
-
-React.useEffect(() => {
-  if (isOpen) {
-    focusRef.current?.focus();
-  }
-}, [isOpen]);
 ```
 
-### 3. 语义化标签
-```tsx
-// 使用正确的语义化标签
-<main>
-  <article>
-    <header>
-      <h1>Article Title</h1>
-      <time dateTime="2023-12-01">December 1, 2023</time>
-    </header>
-    <section>
-      <h2>Section Title</h2>
-      <p>Content...</p>
-    </section>
-  </article>
-</main>
-```
+## 性能优化指引
 
-## 错误处理指引
+### 1. 组件懒加载
 
-### 1. 错误边界
 ```typescript
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+import { lazy, Suspense } from 'react';
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
+const LazyComponent = lazy(() => import('./heavy-component'));
 
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <ErrorFallback />;
-    }
-
-    return this.props.children;
-  }
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
 }
 ```
 
-### 2. 异步错误处理
-```typescript
-const [error, setError] = React.useState<string | null>(null);
-const [loading, setLoading] = React.useState(false);
+### 2. 记忆化优化
 
-const handleAsyncAction = async () => {
-  setLoading(true);
-  setError(null);
-  
-  try {
-    await asyncOperation();
-  } catch (err) {
-    setError(err instanceof Error ? err.message : 'An error occurred');
-  } finally {
-    setLoading(false);
-  }
-};
+```typescript
+import { memo, useMemo, useCallback } from 'react';
+
+const OptimizedComponent = memo(({ data, onAction }) => {
+  const processedData = useMemo(() => {
+    return data.map(item => processItem(item));
+  }, [data]);
+
+  const handleAction = useCallback((id: string) => {
+    onAction(id);
+  }, [onAction]);
+
+  return (
+    // 组件 JSX
+  );
+});
 ```
 
 ## 测试指引
 
-### 1. 组件测试
+### 1. 组件测试模板
+
 ```typescript
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Component } from './Component';
+import { Component } from './component';
 
 describe('Component', () => {
   it('renders correctly', () => {
@@ -657,27 +422,73 @@ describe('Component', () => {
     expect(screen.getByText('Test content')).toBeInTheDocument();
   });
 
-  it('handles click events', () => {
+  it('handles interactions', () => {
     const handleClick = jest.fn();
     render(<Component onClick={handleClick}>Click me</Component>);
     
     fireEvent.click(screen.getByText('Click me'));
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(handleClick).toHaveBeenCalled();
+  });
+
+  it('supports accessibility', () => {
+    render(<Component aria-label="Test component">Content</Component>);
+    expect(screen.getByLabelText('Test component')).toBeInTheDocument();
   });
 });
 ```
 
-### 2. 可访问性测试
+## 错误处理指引
+
+### 1. 错误边界
+
 ```typescript
-import { axe, toHaveNoViolations } from 'jest-axe';
+'use client';
 
-expect.extend(toHaveNoViolations);
+import React from 'react';
 
-it('should not have accessibility violations', async () => {
-  const { container } = render(<Component />);
-  const results = await axe(container);
-  expect(results).toHaveNoViolations();
-});
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error?: Error;
+}
+
+export class ErrorBoundary extends React.Component<
+  React.PropsWithChildren<{}>,
+  ErrorBoundaryState
+> {
+  constructor(props: React.PropsWithChildren<{}>) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex items-center justify-center min-h-[200px]">
+          <div className="text-center">
+            <h2 className="text-lg font-semibold text-destructive">
+              Something went wrong
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Please try refreshing the page
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 ```
 
-这个 AI Agent 提示词和代码生成指引文档提供了完整的规范和模板，确保 AI Agent 能够生成高质量、一致性的 shadcn/ui + Tailwind CSS 代码。
+## 总结
+
+本提示词系统基于 V0 规范，为 AI Agent 提供了完整的代码生成指引。通过遵循这些模板和规范，AI Agent 能够生成高质量、一致性的 shadcn/ui + Tailwind CSS 代码，确保项目的可维护性和开发效率。

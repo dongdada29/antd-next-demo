@@ -1,0 +1,213 @@
+{
+  "version": "1.0.0",
+  "aiWorkflow": {
+    "taskDistribution": {
+      "architecture": {
+        "primaryModel": "claude",
+        "reason": "需要深度理解和系统性思考",
+        "prompts": "claude-optimized",
+        "settings": {
+          "contextLength": "maximum",
+          "detailLevel": "comprehensive",
+          "iterativeRefinement": true
+        }
+      },
+      "componentDevelopment": {
+        "primaryModel": "claude",
+        "reason": "需要完整的组件生态和最佳实践",
+        "prompts": "claude-optimized",
+        "settings": {
+          "includeTests": true,
+          "includeDocumentation": true,
+          "includeAccessibility": true
+        }
+      },
+      "quickFixes": {
+        "primaryModel": "codex",
+        "reason": "快速修复和简单调整",
+        "prompts": "codex-optimized",
+        "settings": {
+          "contextLength": "minimal",
+          "detailLevel": "concise",
+          "focusOnSpeed": true
+        }
+      },
+      "prototyping": {
+        "primaryModel": "codex",
+        "reason": "快速原型和概念验证",
+        "prompts": "codex-optimized",
+        "settings": {
+          "generateMinimal": true,
+          "focusOnFunctionality": true,
+          "skipDocumentation": true
+        }
+      },
+      "refactoring": {
+        "primaryModel": "claude",
+        "reason": "需要理解复杂的代码关系",
+        "prompts": "claude-optimized",
+        "settings": {
+          "analyzeImpact": true,
+          "preserveCompatibility": true,
+          "generateMigrationGuide": true
+        }
+      },
+      "testing": {
+        "primaryModel": "claude",
+        "reason": "需要全面的测试策略",
+        "prompts": "claude-optimized",
+        "settings": {
+          "includeEdgeCases": true,
+          "includeAccessibilityTests": true,
+          "includePerformanceTests": true
+        }
+      },
+      "documentation": {
+        "primaryModel": "claude",
+        "reason": "需要详细和准确的文档",
+        "prompts": "claude-optimized",
+        "settings": {
+          "includeExamples": true,
+          "multiLanguage": true,
+          "includeApiReference": true
+        }
+      }
+    },
+    "collaborativeWorkflow": {
+      "complexFeatures": {
+        "phase1": {
+          "model": "claude",
+          "task": "架构设计和核心组件",
+          "output": "详细的设计文档和核心代码"
+        },
+        "phase2": {
+          "model": "codex",
+          "task": "快速实现辅助功能",
+          "output": "支持性代码和工具函数"
+        },
+        "phase3": {
+          "model": "claude",
+          "task": "集成测试和文档",
+          "output": "完整的测试套件和文档"
+        }
+      },
+      "iterativeRefinement": {
+        "initial": {
+          "model": "codex",
+          "task": "快速原型",
+          "criteria": "基础功能实现"
+        },
+        "refinement": {
+          "model": "claude",
+          "task": "深度优化",
+          "criteria": "生产就绪代码"
+        }
+      }
+    },
+    "qualityGates": {
+      "codeReview": {
+        "model": "claude",
+        "criteria": [
+          "代码质量和可维护性",
+          "性能优化机会",
+          "安全性检查",
+          "可访问性合规",
+          "测试覆盖率"
+        ]
+      },
+      "architectureReview": {
+        "model": "claude",
+        "criteria": [
+          "设计模式应用",
+          "组件解耦程度",
+          "扩展性考虑",
+          "技术债务评估"
+        ]
+      }
+    }
+  },
+  "promptOptimization": {
+    "claude": {
+      "contextPreparation": {
+        "includeProjectStructure": true,
+        "includeExistingPatterns": true,
+        "includeRequirements": true,
+        "includeConstraints": true
+      },
+      "promptStructure": {
+        "systemContext": "详细的系统背景",
+        "taskDescription": "具体的任务要求",
+        "qualityStandards": "明确的质量标准",
+        "expectedOutput": "期望的输出格式",
+        "examples": "相关的代码示例"
+      },
+      "iterativeApproach": {
+        "enabled": true,
+        "maxIterations": 3,
+        "refinementCriteria": [
+          "代码质量改进",
+          "性能优化",
+          "可访问性增强",
+          "测试完善"
+        ]
+      }
+    },
+    "codex": {
+      "contextPreparation": {
+        "includeCurrentFile": true,
+        "includeRelatedFiles": false,
+        "includeMinimalContext": true
+      },
+      "promptStructure": {
+        "taskDescription": "简洁的任务描述",
+        "codePattern": "期望的代码模式",
+        "constraints": "关键约束条件"
+      },
+      "optimizationFocus": {
+        "speed": "优先考虑生成速度",
+        "patterns": "利用模式识别",
+        "completion": "优化代码补全"
+      }
+    }
+  },
+  "performanceMetrics": {
+    "claude": {
+      "codeQuality": {
+        "target": 95,
+        "metrics": [
+          "TypeScript 覆盖率",
+          "ESLint 合规性",
+          "可访问性得分",
+          "性能指标"
+        ]
+      },
+      "completeness": {
+        "target": 90,
+        "metrics": [
+          "文档完整性",
+          "测试覆盖率",
+          "错误处理",
+          "边界情况"
+        ]
+      }
+    },
+    "codex": {
+      "speed": {
+        "target": "< 5s",
+        "metrics": [
+          "响应时间",
+          "代码生成速度",
+          "补全准确性"
+        ]
+      },
+      "efficiency": {
+        "target": 85,
+        "metrics": [
+          "代码简洁性",
+          "模式匹配准确性",
+          "上下文理解"
+        ]
+      }
+    }
+  }
+}

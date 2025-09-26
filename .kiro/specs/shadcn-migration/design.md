@@ -1,153 +1,253 @@
-# shadcn/ui + Tailwind CSS 迁移设计文档
+# AI Agent 编码模板设计文档
 
 ## 概述
 
-本设计文档详细描述了从 Ant Design 到 shadcn/ui + Tailwind CSS 的迁移架构设计。迁移将采用渐进式策略，确保系统稳定性和开发效率。
+本设计文档描述了为 AI Agent 创建的 Next.js + shadcn/ui + Tailwind CSS 编码模板架构。该模板旨在为 AI Agent 提供标准化的项目结构、组件库和内置提示词系统，使 AI Agent 能够快速生成高质量、一致性的 Web 应用代码。
+
+## 核心目标
+
+1. **AI Agent 友好**：为 AI 代码生成优化的项目结构和组件设计
+2. **快速初始化**：提供完整的项目模板，支持一键初始化
+3. **内置提示词**：集成基于 V0 规范的 AI 提示词系统
+4. **高质量输出**：确保 AI 生成的代码符合最佳实践和项目规范
 
 ## 架构设计
 
-### 整体架构
+### AI Agent 编码模板架构
 
 ```mermaid
 graph TB
-    A[应用层] --> B[组件层]
-    B --> C[UI 基础组件层]
-    C --> D[样式系统层]
+    A[AI Agent] --> B[提示词系统]
+    B --> C[代码生成引擎]
+    C --> D[模板系统]
+    D --> E[输出代码]
     
-    subgraph "组件层"
-        B1[业务组件]
-        B2[布局组件]
-        B3[功能组件]
+    subgraph "提示词系统"
+        B1[V0 基础提示词]
+        B2[项目特定提示词]
+        B3[组件生成提示词]
+        B4[页面生成提示词]
     end
     
-    subgraph "UI 基础组件层"
-        C1[shadcn/ui 组件]
-        C2[自定义组件]
-        C3[适配器组件]
+    subgraph "模板系统"
+        D1[项目结构模板]
+        D2[组件模板]
+        D3[页面模板]
+        D4[配置模板]
     end
     
-    subgraph "样式系统层"
-        D1[Tailwind CSS]
-        D2[设计 Token]
-        D3[主题系统]
+    subgraph "输出代码"
+        E1[Next.js 应用]
+        E2[shadcn/ui 组件]
+        E3[Tailwind CSS 样式]
+        E4[TypeScript 类型]
     end
 ```
 
-### 迁移策略架构
+### 项目结构设计
+
+```
+ai-coding-template/
+├── .kiro/                          # Kiro 配置
+│   ├── steering/                   # AI 指导规则
+│   │   ├── coding-standards.md     # 编码规范
+│   │   ├── component-patterns.md   # 组件模式
+│   │   └── ai-prompts.md          # AI 提示词
+│   └── settings/
+├── src/
+│   ├── app/                        # Next.js App Router
+│   ├── components/                 # 组件库
+│   │   ├── ui/                    # shadcn/ui 基础组件
+│   │   ├── common/                # 通用组件
+│   │   ├── forms/                 # 表单组件
+│   │   ├── layouts/               # 布局组件
+│   │   └── templates/             # AI 生成模板
+│   ├── lib/                       # 工具库
+│   │   ├── utils.ts              # 通用工具
+│   │   ├── ai-helpers.ts         # AI 辅助函数
+│   │   └── prompts/              # 提示词库
+│   ├── hooks/                     # React Hooks
+│   ├── types/                     # TypeScript 类型
+│   └── styles/                    # 样式文件
+├── docs/                          # 文档
+│   ├── ai-usage.md               # AI 使用指南
+│   ├── component-guide.md        # 组件指南
+│   └── examples/                 # 示例代码
+└── templates/                     # 代码模板
+    ├── components/               # 组件模板
+    ├── pages/                   # 页面模板
+    └── prompts/                 # 提示词模板
+```
+
+## AI 提示词系统设计
+
+### 基于 V0 的提示词架构
+
+参考 [V0 系统提示词](https://github.com/2-fly-4-ai/V0-system-prompt/)，设计分层的提示词系统：
+
+| 提示词类型 | 作用范围 | AI Agent 使用场景 | 优先级 |
+|------------|----------|-------------------|--------|
+| 系统级提示词 | 全局规范 | 项目初始化、架构设计 | 最高 |
+| 组件级提示词 | 单个组件 | 组件生成、修改 | 高 |
+| 页面级提示词 | 页面构建 | 页面生成、布局设计 | 高 |
+| 样式提示词 | 样式规范 | CSS 类生成、主题应用 | 中 |
+| 交互提示词 | 用户交互 | 事件处理、状态管理 | 中 |
+| 性能提示词 | 优化建议 | 代码优化、性能提升 | 低 |
+
+### AI Agent 代码生成流程
 
 ```mermaid
-graph LR
-    A[当前状态<br/>Ant Design] --> B[过渡状态<br/>双系统并存]
-    B --> C[目标状态<br/>shadcn/ui]
+sequenceDiagram
+    participant User as 用户
+    participant AI as AI Agent
+    participant Prompt as 提示词系统
+    participant Template as 模板系统
+    participant Output as 代码输出
     
-    subgraph "过渡阶段"
-        B1[Ant Design 组件]
-        B2[shadcn/ui 组件]
-        B3[适配器层]
-    end
+    User->>AI: 发送需求描述
+    AI->>Prompt: 获取相关提示词
+    Prompt->>AI: 返回上下文提示词
+    AI->>Template: 选择合适模板
+    Template->>AI: 返回代码模板
+    AI->>Output: 生成最终代码
+    Output->>User: 返回生成结果
 ```
 
-## 组件设计
-
-### 基础组件映射
-
-| Ant Design | shadcn/ui | 迁移复杂度 | 备注 |
-|------------|-----------|------------|------|
-| Button | Button | 低 | 直接映射 |
-| Input | Input | 低 | API 相似 |
-| Card | Card | 低 | 结构相似 |
-| Modal | Dialog | 中 | API 差异较大 |
-| Table | Table | 高 | 功能复杂 |
-| Form | Form | 高 | 需要重新设计 |
-| DatePicker | Calendar + Popover | 高 | 需要组合实现 |
-| Select | Select | 中 | 功能相似 |
-| Drawer | Sheet | 中 | API 略有差异 |
-| Tooltip | Tooltip | 低 | 直接映射 |
-
-### 组件架构设计
+### AI 友好的组件设计
 
 ```typescript
-// 组件基础接口
-interface BaseComponentProps {
-  className?: string;
-  children?: React.ReactNode;
-  variant?: string;
-  size?: 'sm' | 'md' | 'lg';
+// AI Agent 组件生成接口
+interface AIComponentConfig {
+  name: string;
+  type: 'ui' | 'layout' | 'form' | 'data';
+  props: ComponentPropDefinition[];
+  variants: VariantDefinition[];
+  examples: CodeExample[];
+  prompts: ComponentPrompts;
 }
 
-// 组件变体系统
-interface ComponentVariants {
-  variants: {
-    variant: Record<string, string>;
-    size: Record<string, string>;
-  };
-  defaultVariants: {
-    variant: string;
-    size: string;
-  };
+// 组件属性定义（AI 可理解）
+interface ComponentPropDefinition {
+  name: string;
+  type: string;
+  required: boolean;
+  description: string;
+  defaultValue?: any;
+  examples: any[];
+}
+
+// AI 提示词配置
+interface ComponentPrompts {
+  generation: string;      // 组件生成提示词
+  modification: string;    // 组件修改提示词
+  styling: string;        // 样式应用提示词
+  testing: string;        // 测试生成提示词
 }
 ```
 
-### 适配器模式设计
+### 模板系统设计
 
 ```typescript
-// Ant Design 到 shadcn/ui 适配器
-interface ComponentAdapter<AntProps, ShadcnProps> {
-  adapt(antProps: AntProps): ShadcnProps;
-  reverse?(shadcnProps: ShadcnProps): AntProps;
+// 代码模板接口
+interface CodeTemplate {
+  id: string;
+  name: string;
+  category: 'component' | 'page' | 'hook' | 'utility';
+  template: string;
+  variables: TemplateVariable[];
+  prompts: TemplatePrompts;
 }
 
-// 示例：Button 适配器
-class ButtonAdapter implements ComponentAdapter<AntButtonProps, ShadcnButtonProps> {
-  adapt(antProps: AntButtonProps): ShadcnButtonProps {
-    return {
-      variant: this.mapVariant(antProps.type),
-      size: this.mapSize(antProps.size),
-      disabled: antProps.disabled,
-      children: antProps.children,
-    };
-  }
+// 模板变量定义
+interface TemplateVariable {
+  name: string;
+  type: 'string' | 'boolean' | 'array' | 'object';
+  description: string;
+  defaultValue?: any;
+  validation?: ValidationRule[];
+}
+
+// AI 模板生成器
+class AITemplateGenerator {
+  generateComponent(config: AIComponentConfig): string;
+  generatePage(layout: PageLayout, components: string[]): string;
+  generateHook(functionality: HookConfig): string;
+  applyPrompts(template: string, prompts: TemplatePrompts): string;
 }
 ```
 
-## 样式系统设计
+## AI 提示词集成设计
 
-### Tailwind CSS 配置
+### V0 提示词适配
 
-```javascript
-// tailwind.config.js
-module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {
-      colors: {
-        // 设计 token 颜色系统
-        primary: {
-          50: '#eff6ff',
-          500: '#3b82f6',
-          900: '#1e3a8a',
-        },
-        // 语义化颜色
-        success: 'hsl(var(--success))',
-        warning: 'hsl(var(--warning))',
-        error: 'hsl(var(--error))',
-      },
-      spacing: {
-        // 间距系统
-        '18': '4.5rem',
-        '88': '22rem',
-      },
-      fontFamily: {
-        // 字体系统
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
-      },
-    },
+基于 [V0 系统提示词](https://github.com/2-fly-4-ai/V0-system-prompt/) 的核心原则：
+
+```typescript
+// V0 提示词配置
+interface V0PromptConfig {
+  systemPrompt: string;           // 系统级提示词
+  componentPrompts: {             // 组件生成提示词
+    ui: string;
+    layout: string;
+    form: string;
+    data: string;
+  };
+  stylePrompts: {                 // 样式相关提示词
+    tailwind: string;
+    responsive: string;
+    darkMode: string;
+    accessibility: string;
+  };
+  codeQuality: {                  // 代码质量提示词
+    typescript: string;
+    testing: string;
+    performance: string;
+    security: string;
+  };
+}
+
+// AI 上下文管理器
+class AIContextManager {
+  private prompts: V0PromptConfig;
+  private projectContext: ProjectContext;
+  
+  getSystemPrompt(): string;
+  getComponentPrompt(type: ComponentType): string;
+  getStylePrompt(context: StyleContext): string;
+  buildFullPrompt(userRequest: string): string;
+}
+```
+
+### 内置提示词库
+
+```typescript
+// 提示词库结构
+const BUILTIN_PROMPTS = {
+  // 基础系统提示词（基于 V0）
+  system: `
+你是一个专业的 React + Next.js + TypeScript 开发专家。
+使用 shadcn/ui + Tailwind CSS 技术栈。
+遵循以下原则：
+1. 优先使用 shadcn/ui 组件
+2. 使用 Tailwind CSS 进行样式设计
+3. 确保 TypeScript 类型安全
+4. 实现可访问性标准
+5. 考虑性能优化
+  `,
+  
+  // 组件生成提示词
+  component: {
+    button: `创建一个 Button 组件，使用 shadcn/ui Button 作为基础...`,
+    form: `创建一个表单组件，使用 React Hook Form + Zod 验证...`,
+    table: `创建一个数据表格，使用 shadcn/ui Table + TanStack Table...`,
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
+  
+  // 页面生成提示词
+  page: {
+    dashboard: `创建一个仪表板页面，包含统计卡片、图表和数据表格...`,
+    form: `创建一个表单页面，包含验证、提交和错误处理...`,
+    list: `创建一个列表页面，包含搜索、筛选和分页功能...`,
+  }
 };
 ```
 

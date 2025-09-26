@@ -1,0 +1,17 @@
+# pnpm 工作区配置
+packages:
+  # 主项目
+  - '.'
+  
+  # 可选的子包目录（如果将来需要）
+  - 'packages/*'
+  - 'apps/*'
+  - 'tools/*'
+
+# 排除的目录
+exclude:
+  - '**/node_modules/**'
+  - '**/dist/**'
+  - '**/.next/**'
+  - '**/build/**'
+  - '**/coverage/**'

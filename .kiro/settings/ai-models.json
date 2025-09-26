@@ -1,0 +1,122 @@
+{
+  "version": "1.0.0",
+  "aiModels": {
+    "claude": {
+      "name": "Claude Code",
+      "provider": "Anthropic",
+      "capabilities": {
+        "codeGeneration": "excellent",
+        "contextUnderstanding": "excellent",
+        "multiFileEditing": "excellent",
+        "refactoring": "excellent",
+        "debugging": "excellent",
+        "documentation": "excellent"
+      },
+      "strengths": [
+        "深度理解项目上下文",
+        "优秀的 TypeScript 支持",
+        "强大的重构能力",
+        "详细的代码注释",
+        "遵循最佳实践",
+        "多文件协调编辑"
+      ],
+      "optimizations": {
+        "promptStrategy": "contextual",
+        "codeStyle": "verbose-comments",
+        "errorHandling": "comprehensive",
+        "testGeneration": "detailed",
+        "documentation": "extensive"
+      },
+      "recommendedFor": [
+        "复杂组件开发",
+        "架构设计",
+        "代码重构",
+        "测试编写",
+        "文档生成"
+      ]
+    },
+    "codex": {
+      "name": "GitHub Copilot / OpenAI Codex",
+      "provider": "OpenAI",
+      "capabilities": {
+        "codeGeneration": "excellent",
+        "contextUnderstanding": "good",
+        "multiFileEditing": "limited",
+        "refactoring": "good",
+        "debugging": "good",
+        "documentation": "moderate"
+      },
+      "strengths": [
+        "快速代码生成",
+        "广泛的语言支持",
+        "模式识别能力强",
+        "简洁的代码风格",
+        "高效的自动补全"
+      ],
+      "optimizations": {
+        "promptStrategy": "concise",
+        "codeStyle": "minimal-comments",
+        "errorHandling": "basic",
+        "testGeneration": "simple",
+        "documentation": "minimal"
+      },
+      "recommendedFor": [
+        "快速原型开发",
+        "简单组件生成",
+        "代码补全",
+        "重复性任务",
+        "基础功能实现"
+      ]
+    }
+  },
+  "adaptiveSettings": {
+    "claude": {
+      "maxContextLength": 200000,
+      "preferredPromptStyle": "detailed",
+      "codeExamples": "comprehensive",
+      "explanationLevel": "detailed",
+      "errorRecovery": "advanced",
+      "iterativeRefinement": true
+    },
+    "codex": {
+      "maxContextLength": 8000,
+      "preferredPromptStyle": "concise",
+      "codeExamples": "minimal",
+      "explanationLevel": "brief",
+      "errorRecovery": "basic",
+      "iterativeRefinement": false
+    }
+  },
+  "taskMapping": {
+    "componentGeneration": {
+      "primary": "claude",
+      "fallback": "codex",
+      "reason": "Claude 更适合生成完整的、符合规范的组件"
+    },
+    "quickFixes": {
+      "primary": "codex",
+      "fallback": "claude",
+      "reason": "Codex 在快速修复方面更高效"
+    },
+    "refactoring": {
+      "primary": "claude",
+      "fallback": "codex",
+      "reason": "Claude 在理解复杂重构需求方面更强"
+    },
+    "testing": {
+      "primary": "claude",
+      "fallback": "codex",
+      "reason": "Claude 能生成更全面的测试用例"
+    },
+    "documentation": {
+      "primary": "claude",
+      "fallback": "codex",
+      "reason": "Claude 在文档生成方面更详细准确"
+    },
+    "prototyping": {
+      "primary": "codex",
+      "fallback": "claude",
+      "reason": "Codex 在快速原型开发方面更高效"
+    }
+  }
+}

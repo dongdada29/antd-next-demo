@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "projectType": "nextjs-shadcn-template",
+  "aiAgent": {
+    "enabled": true,
+    "features": {
+      "codeGeneration": true,
+      "componentScaffolding": true,
+      "testGeneration": true,
+      "documentationGeneration": true,
+      "qualityChecks": true
+    },
+    "prompts": {
+      "useV0Standards": true,
+      "enforceTypeScript": true,
+      "enforceAccessibility": true,
+      "enforceResponsiveDesign": true,
+      "enforceDarkMode": true
+    },
+    "codeStyle": {
+      "componentNaming": "PascalCase",
+      "fileNaming": "kebab-case",
+      "useForwardRef": true,
+      "useDisplayName": true,
+      "useClassVarianceAuthority": true,
+      "preferTailwindCSS": true
+    },
+    "quality": {
+      "minTypeScriptCoverage": 95,
+      "minTestCoverage": 80,
+      "minAccessibilityScore": 90,
+      "enforceESLintRules": true,
+      "enforcePrettierFormatting": true
+    }
+  },
+  "techStack": {
+    "framework": "Next.js 14+",
+    "uiLibrary": "shadcn/ui",
+    "styling": "Tailwind CSS",
+    "language": "TypeScript",
+    "packageManager": "pnpm",
+    "stateManagement": "React Hooks + Context",
+    "forms": "React Hook Form + Zod",
+    "dataFetching": "TanStack Query",
+    "testing": "Vitest + React Testing Library",
+    "icons": "Lucide React"
+  },
+  "directories": {
+    "components": "src/components",
+    "pages": "src/app",
+    "hooks": "src/hooks",
+    "utils": "src/lib",
+    "types": "src/types",
+    "tests": "src/test",
+    "styles": "src/styles"
+  },
+  "templates": {
+    "component": ".kiro/templates/component.template.tsx",
+    "page": ".kiro/templates/page.template.tsx",
+    "hook": ".kiro/templates/hook.template.ts",
+    "test": ".kiro/templates/test.template.tsx"
+  }
+}
