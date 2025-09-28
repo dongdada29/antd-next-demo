@@ -41,3 +41,9 @@ export {
 
 // 错误处理相关Hooks
 export * from './useErrorHandler';
+
+// AI Component Registry Hooks
+export * from './useAIComponentRegistry';
+
+// Component Generation Hooks
+export * from './useComponentGeneration';

@@ -24,3 +24,6 @@ export * from './api-documentation';
 
 // Development Stage types
 export * from './development-stage';
+
+// AI Component types
+export * from './ai-component';
