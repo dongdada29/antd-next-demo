@@ -74,43 +74,96 @@ const nextConfig = {
     
     // 生产环境优化
     if (!dev && !isServer) {
-      // 代码分割优化
+      // 高级代码分割优化
       config.optimization.splitChunks = {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
         cacheGroups: {
           default: false,
           vendors: false,
-          // 第三方库单独打包
-          vendor: {
-            name: 'vendor',
-            chunks: 'all',
-            test: /node_modules/,
-            priority: 20,
-          },
-          // Ant Design单独打包
-          antd: {
-            name: 'antd',
-            chunks: 'all',
-            test: /[\\/]node_modules[\\/](antd|@ant-design)[\\/]/,
-            priority: 30,
-          },
-          // React相关库单独打包
+          
+          // React 核心库
           react: {
             name: 'react',
             chunks: 'all',
             test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            priority: 50,
+            enforce: true,
+          },
+          
+          // shadcn/ui 组件
+          shadcn: {
+            name: 'shadcn',
+            chunks: 'all',
+            test: /[\\/]src[\\/]components[\\/]ui[\\/]/,
+            priority: 45,
+            minChunks: 2,
+          },
+          
+          // Tailwind CSS 相关
+          tailwind: {
+            name: 'tailwind',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](tailwindcss|@tailwindcss)[\\/]/,
             priority: 40,
           },
-          // 公共代码
+          
+          // 第三方 UI 库
+          uiLibs: {
+            name: 'ui-libs',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](@radix-ui|lucide-react|class-variance-authority)[\\/]/,
+            priority: 35,
+          },
+          
+          // 工具库
+          utils: {
+            name: 'utils',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](lodash|date-fns|clsx|cn)[\\/]/,
+            priority: 30,
+          },
+          
+          // 大型第三方库
+          vendor: {
+            name: 'vendor',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/]/,
+            priority: 20,
+            minChunks: 2,
+          },
+          
+          // 应用公共代码
           common: {
             name: 'common',
-            minChunks: 2,
             chunks: 'all',
+            minChunks: 2,
             priority: 10,
             reuseExistingChunk: true,
+            test: /[\\/]src[\\/]/,
+          },
+          
+          // 懒加载组件
+          lazy: {
+            name: 'lazy',
+            chunks: 'async',
+            test: /[\\/]src[\\/]components[\\/]/,
+            priority: 15,
+            minChunks: 1,
           },
         },
       };
+      
+      // 模块连接优化
+      config.optimization.concatenateModules = true;
+      
+      // 启用 Tree Shaking
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
       
       // 启用Bundle分析器（如果需要）
       if (process.env.ANALYZE === 'true') {
@@ -122,6 +175,11 @@ const nextConfig = {
           })
         );
       }
+      
+      // 预加载关键资源
+      config.plugins.push(
+        new webpack.optimize.ModuleConcatenationPlugin()
+      );
     }
     
     // 开发环境优化
