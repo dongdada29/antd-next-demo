@@ -75,6 +75,9 @@
     "validate": "node scripts/run-validation.js",
     "validate:quick": "npm run test:unit && npm run lint && npm run type-check",
     "validate:full": "node scripts/run-validation.js",
+    "validate:final": "node scripts/final-validation.js",
+    "release:prepare": "node scripts/prepare-release.js",
+    "release:validate": "npm run validate:final && npm run release:prepare",
     "test:ai": "vitest run src/test/comprehensive-validation.test.ts",
     "test:validation": "vitest run src/test/performance-validation.test.ts"
   },
