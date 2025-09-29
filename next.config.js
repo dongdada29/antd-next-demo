@@ -20,8 +20,6 @@ const nextConfig = {
   
   // 实验性功能
   experimental: {
-    // 优化字体加载
-    optimizeFonts: true,
     // 现代化输出
     esmExternals: true,
     // 启用Turbo模式（开发环境）
@@ -35,8 +33,6 @@ const nextConfig = {
     },
     // 优化CSS
     optimizeCss: true,
-    // 启用并发特性
-    serverComponentsExternalPackages: ['@ant-design/icons'],
   },
   
   // 构建优化

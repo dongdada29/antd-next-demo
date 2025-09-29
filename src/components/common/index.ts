@@ -1,5 +1,5 @@
 // 通用组件导出
-export { DetailView } from './DetailView';
-export { ProfileCard } from './ProfileCard';
-export { ErrorBoundary, ApiErrorDisplay, DataError, ParamError, withErrorBoundary } from './ErrorBoundary';
+export { default as DetailView } from './DetailView';
+export { default as ProfileCard } from './ProfileCard';
+export { default as ErrorBoundary } from './ErrorBoundary';
 export * from './LoadingStates';

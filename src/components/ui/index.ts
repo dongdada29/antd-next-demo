@@ -12,6 +12,29 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 export { Input } from './input';
 export { Label } from './label';
 export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption } from './table';
+export { Badge } from './badge';
+
+// Form components  
+export { 
+  Form, 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormControl, 
+  FormDescription, 
+  FormMessage 
+} from './form';
+
+// New components
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
+export { Alert, AlertTitle, AlertDescription } from './alert';
+export { Separator } from './separator';
+export { ScrollArea, ScrollBar } from './scroll-area';
+export { Textarea } from './textarea';
+export { Switch } from './switch';
+export { Slider } from './slider';
+export { Progress } from './progress';
+export { Avatar, AvatarImage, AvatarFallback } from './avatar';
 
 // Enhanced AI-friendly components with metadata
 export { 

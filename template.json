@@ -1,0 +1,137 @@
+{
+    "name": "@xagi/ai-template-react-next-app",
+    "version": "1.2.0",
+    "description": "Modern Next.js application with Pages mode, unstyled components and XAGI AI coding integration",
+    "category": "frontend",
+    "publishDate": "2024-05-10",
+    "status": "latest",
+    "breaking": false,
+    "features": [
+        "Next.js 14支持",
+        "Pages模式",
+        "无样式组件库",
+        "XAGI智能编码"
+    ],
+    "techStack": {
+        "framework": "Next.js 14",
+        "language": "TypeScript",
+        "ui": "shadcn/ui + Tailwind CSS",
+        "stateManagement": "TanStack Query",
+        "forms": "React Hook Form + Zod",
+        "testing": "Vitest + React Testing Library",
+        "packageManager": "pnpm",
+        "linting": "ESLint + Prettier"
+    },
+    "aiIntegration": {
+        "supported": true,
+        "agents": [
+            "claude",
+            "codex",
+            "cursor",
+            "windsurf",
+            "gemini"
+        ],
+        "features": [
+            "AI组件生成",
+            "智能代码优化",
+            "自动化测试生成",
+            "性能监控",
+            "代码质量检查",
+            "智能重构建议"
+        ],
+        "prompts": {
+            "system": "基于V0规范的AI编码助手",
+            "component": "shadcn/ui + Tailwind CSS组件生成",
+            "testing": "自动化测试用例生成",
+            "optimization": "性能优化建议"
+        }
+    },
+    "projectStructure": {
+        "src/app": "Next.js App Router页面和布局",
+        "src/components": "可复用React组件",
+        "src/hooks": "自定义React Hooks",
+        "src/lib": "工具函数和帮助器",
+        "src/types": "TypeScript类型定义",
+        "src/services": "API服务和数据获取",
+        "scripts": "构建和工具脚本",
+        "docs": "项目文档"
+    },
+    "commands": {
+        "dev": "pnpm dev",
+        "build": "pnpm build",
+        "start": "pnpm start",
+        "test": "pnpm test",
+        "lint": "pnpm lint",
+        "ai:init": "pnpm ai:init",
+        "ai:component": "pnpm ai:component",
+        "ai:validate": "pnpm ai:validate"
+    },
+    "requirements": {
+        "node": ">=18.0.0",
+        "pnpm": ">=8.0.0"
+    },
+    "browsers": {
+        "chrome": ">=87",
+        "firefox": ">=78",
+        "safari": ">=14",
+        "edge": ">=87"
+    },
+    "accessibility": {
+        "standard": "WCAG 2.1 AA",
+        "testing": "jest-axe",
+        "features": [
+            "键盘导航",
+            "屏幕阅读器支持",
+            "颜色对比度"
+        ]
+    },
+    "performance": {
+        "lighthouse": ">=90",
+        "features": [
+            "代码分割",
+            "图片优化",
+            "字体优化",
+            "缓存策略"
+        ]
+    },
+    "deployment": {
+        "platforms": [
+            "Vercel",
+            "Netlify",
+            "Docker"
+        ],
+        "features": [
+            "静态导出",
+            "SSR支持",
+            "ISR支持"
+        ]
+    },
+    "changelog": {
+        "1.0.0": {
+            "date": "2024-01-15",
+            "features": [
+                "基础Next.js支持",
+                "TypeScript配置",
+                "XAGI AI集成"
+            ]
+        },
+        "1.1.0": {
+            "date": "2024-03-20",
+            "features": [
+                "Tailwind CSS",
+                "ESLint配置",
+                "测试框架",
+                "AI编码助手"
+            ]
+        },
+        "1.2.0": {
+            "date": "2024-05-10",
+            "features": [
+                "Next.js 14支持",
+                "Pages模式",
+                "无样式组件库",
+                "XAGI智能编码"
+            ]
+        }
+    }
+}
