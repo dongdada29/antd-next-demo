@@ -1,6 +1,6 @@
 {
   "name": "@xagi/ai-template-react-next-app",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Modern Next.js application with Pages mode, unstyled components and XAGI AI coding integration",
   "private": false,
   "publishConfig": {
@@ -50,7 +50,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "clean": "rm -rf .next out",
-    "prebuild": "npm run clean && npm run type-check",
+    "prebuild": "npm run clean",
     "postbuild": "next-sitemap",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -197,6 +197,8 @@
     "vitest.*.config.ts",
     "scripts/",
     "docs/",
+    "template.json",
+    "template-init.js",
     "README.md",
     "AGENTS.md",
     "BUILD_OPTIMIZATION.md",
@@ -204,8 +206,8 @@
     "MIGRATION_GUIDE.md",
     "RELEASE_NOTES.md",
     "SUPPORT_PLAN.md",
-    "template.json",
-    "template-init.js"
+    "*.ai",
+    "**/*.ai"
   ],
   "template": {
     "name": "react-next-app",

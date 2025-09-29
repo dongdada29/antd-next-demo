@@ -230,7 +230,7 @@ class TemplatePublisher {
       fs.mkdirSync(this.distDir, { recursive: true });
     }
 
-    const packageFile = `${packageJson.name}-${packageJson.version}.tgz`;
+    const packageFile = `template.tgz`;
 
     // Create .npmignore if it doesn't exist
     if (!fs.existsSync('.npmignore')) {
